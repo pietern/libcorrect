@@ -27,12 +27,6 @@ endif(MSVC)
 
 find_library(FEC fec)
 CHECK_LIBRARY_EXISTS(FEC dotprod "" HAVE_LIBFEC)
-check_cxx_source_compiles("
-    #include <x86intrin.h>
-    int main() {
-      __m128i vec;
-      return 0;
-    }" HAVE_SSE)
 
 if(HAVE_SSE)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse4.2")
